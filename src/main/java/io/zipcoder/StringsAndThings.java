@@ -6,29 +6,27 @@ package io.zipcoder;
  */
 public class StringsAndThings {
 
-    /**
-     * Given a string, count the number of words ending in 'y' or 'z' -- so the 'y' in "heavy" and the 'z' in "fez" count,
-     * but not the 'y' in "yellow" (not case sensitive). We'll say that a y or z is at the end of a word if there is not an alphabetic
-     * letter immediately following it. (Note: Character.isLetter(char) tests if a char is an alphabetic letter.)
-     * example : countYZ("fez day"); // Should return 2
-     *           countYZ("day fez"); // Should return 2
-     *           countYZ("day fyyyz"); // Should return 2
-     */
+
     public Integer countYZ(String input){
-        return null;
+        int count=0;
+       int  space=input.indexOf(" ");
+        for(int i=0;i<input.length();i++){
+           if(i+1==space)
+            if(input.charAt(i)=='y'||input.charAt(i)=='z')
+                count++;
+        }
+        if(input.charAt(input.length()-1)=='y')
+            count++;
+        if(input.charAt(input.length()-1)=='z')
+            count++;
+        return count;
     }
 
-    /**
-     * Given two strings, base and remove, return a version of the base string where all instances of the remove string have
-     * been removed (not case sensitive). You may assume that the remove string is length 1 or more.
-     * Remove only non-overlapping instances, so with "xxx" removing "xx" leaves "x".
-     *
-     * example : removeString("Hello there", "llo") // Should return "He there"
-     *           removeString("Hello there", "e") //  Should return "Hllo thr"
-     *           removeString("Hello there", "x") // Should return "Hello there"
-     */
+
     public String removeString(String base, String remove){
-        return null;
+       String x= base.replace(remove, "");
+        System.out.println(x);
+        return x;
     }
 
     /**
@@ -40,7 +38,18 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        String str []=input.split(" ");
+        int x=0,y=0;
+        for(int i=0;i<str.length;i++){
+            if(str[i].equalsIgnoreCase("is"))
+                x++;
+            if(str[i].equalsIgnoreCase("not"))
+                y++;
+        }
+        if(x==y)
+        return true;
+        else
+            return false;
     }
 
     /**
@@ -51,7 +60,12 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+
+        for(int i=0;i<input.length();i++){
+            if(input.charAt(i)=='g'&&input.charAt(i+1)=='g')
+                return true;
+        }
+        return false;
     }
 
 
@@ -63,6 +77,11 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        int count=0;
+        for(int i=0;i<input.length()-2;i++){
+            if(input.charAt(i)==input.charAt(i+1)&&input.charAt(i+1)==input.charAt(i+2))
+                count++;
+        }
+        return count;
     }
 }
